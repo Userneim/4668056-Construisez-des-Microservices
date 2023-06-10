@@ -76,9 +76,10 @@ public class ProductController {
     }
 
     @ApiOperation(value = "Récupérer la liste des produits triée par ordre alphabetique")
-    @GetMapping("/Produits/triaphabetique/")
+    @GetMapping("/TriProduits/")
     public List<Product> trierProduitsParOrdreAlphabetique(){
-        List<Product> productList = productDao.findAll();
+        List<Product> productList = productDao.findAllByOrderByNom();
+        /* TODO : NOT INSIDE A CONTROLLER
         productList.sort(new Comparator<Product>() {
 
             @Override
@@ -89,7 +90,7 @@ public class ProductController {
                 return s1.compareToIgnoreCase(s2);
             }
 
-        });
+        });*/
 
         return productList;
     }
