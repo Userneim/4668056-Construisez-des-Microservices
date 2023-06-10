@@ -55,7 +55,7 @@ public class ProductController {
     }
 
     @PostMapping(value = "/Produits")
-    public ResponseEntity<Product> ajouterProduit(@RequestBody /*@Valid*/ Product product) {
+    public ResponseEntity<Product> ajouterProduit(@RequestBody @Valid Product product) {
         if (product.getPrix() == 0) throw new ProduitGratuitException("Un article est gratuit 🤍");
         Product productAdded = productDao.save(product);
         URI location = ServletUriComponentsBuilder
